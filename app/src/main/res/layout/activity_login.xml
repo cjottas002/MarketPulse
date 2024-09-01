@@ -1,61 +1,20 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".ui.activities.LoginActivity">
 
-    <data>
-        <variable
-            name="user"
-            type="es.market.pulse.ui.viewmodels.LoginViewModel" />
-    </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <include
+        android:id="@+id/tl_login"
+        layout="@layout/toolbar"
+        android:visibility="gone"/>
+
+    <FrameLayout
+        android:id="@+id/fl_main_login"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="16dp" />
 
-        <EditText
-            android:id="@+id/email_edit_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            android:text="@{user.email}" />
-
-
-        <EditText
-            android:id="@+id/password_edit_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            app:layout_constraintTop_toBottomOf="@id/email_edit_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            android:text="@{user.password}" />
-
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            app:layout_constraintTop_toBottomOf="@id/password_edit_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
-
-        <TextView
-            android:id="@+id/register_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Don't have an account? Register here"
-            android:textColor="?attr/colorPrimary"
-            app:layout_constraintTop_toBottomOf="@id/login_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            android:clickable="true"
-            android:focusable="true" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</LinearLayout>

@@ -3,7 +3,7 @@ package es.market.pulse.utils
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-object StringValidator {
+object Helpers {
 
     fun hashPassword(password: String): String {
         return try {

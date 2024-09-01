@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Market Pulse</string>
+    <string name="name_hint">Nombre</string>
+    <string name="email_hint">Correo electrónico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="register_button">Registrar</string>
+    <string name="login_prompt">¿Ya tienes cuenta? Inicia sesión aquí</string>
+    <string name="login_failed">Inicio de sesión fallido</string>
+    <string name="login_button">Iniciar sesión</string>
+    <string name="register_prompt">¿No tienes una cuenta? Regístrate aquí</string>
+</resources>

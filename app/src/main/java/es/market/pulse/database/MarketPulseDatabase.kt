@@ -5,14 +5,13 @@ import androidx.room.RoomDatabase
 import es.market.pulse.model.Product
 import es.market.pulse.model.User
 import android.content.Context
-import android.util.Log
 import androidx.room.Room
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import es.market.pulse.model.*
 import es.market.pulse.utils.Constants
 import es.market.pulse.utils.Converters
-import es.market.pulse.utils.StringValidator
+import es.market.pulse.utils.Helpers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -113,34 +112,34 @@ abstract class MarketPulseDatabase : RoomDatabase() {
                     User(
                         username = "admin",
                         email = "admin@example.com",
-                        passwordHash = StringValidator.hashPassword("admin"),
+                        passwordHash = Helpers.hashPassword("admin"),
                         addressId = 1,
                         roleId = adminRoleId
                     ),
                     User(
                         username = "usu1",
                         email = "usu1@example.com",
-                        passwordHash = StringValidator.hashPassword("pass1"),
+                        passwordHash = Helpers.hashPassword("pass1"),
                         addressId = 2,
                         roleId = userRoleId
                     ),
                     User(
                         username = "usu2",
                         email = "usu2@example.com",
-                        passwordHash = StringValidator.hashPassword("pass2"),
+                        passwordHash = Helpers.hashPassword("pass2"),
                         addressId = 3,
                         roleId = userRoleId
                     ),
                     User(
                         username = "usu3",
                         email = "usu3@example.com",
-                        passwordHash = StringValidator.hashPassword("pass3"),
+                        passwordHash = Helpers.hashPassword("pass3"),
                         roleId = userRoleId
                     ),
                     User(
                         username = "pro1",
                         email = "pro1@example.com",
-                        passwordHash = StringValidator.hashPassword("pro1"),
+                        passwordHash = Helpers.hashPassword("pro1"),
                         roleId = providerRoleId
                     )
                 )

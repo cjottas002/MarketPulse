@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import es.market.pulse.repository.UserRepository
-import es.market.pulse.utils.StringValidator
+import es.market.pulse.utils.Helpers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -18,7 +18,7 @@ class LoginViewModel @Inject constructor(private val userRepository: UserReposit
     suspend fun login(email: String, password: String): Boolean {
         return withContext(Dispatchers.IO) {
             val user = userRepository.getUserByEmail(email)
-            user != null && StringValidator.verifyPassword(password, user.passwordHash)
+            user != null && Helpers.verifyPassword(password, user.passwordHash)
         }
     }
 }
