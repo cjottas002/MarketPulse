@@ -50,7 +50,7 @@ abstract class MarketPulseDatabase : RoomDatabase() {
         }
     }
 
-    private class MarketPulseDatabaseCallback(private val context: Context) : Callback() {
+    class MarketPulseDatabaseCallback(private val context: Context) : Callback() {
 
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)

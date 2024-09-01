@@ -1,8 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-kapt")
-    kotlin("kapt")
+    //Kapt
+    alias(libs.plugins.kapt)
+    //Hilt
+    alias(libs.plugins.hilt)
+    //Room
+//    alias(libs.plugins.room)
+    //KSP
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -18,6 +24,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -35,6 +42,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         dataBinding = true
         viewBinding = true
@@ -60,8 +68,9 @@ dependencies {
 
     // Room for Database
     implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
     implementation(libs.room.ktx)
-    kapt(libs.room.compiler)
+    ksp(libs.room.compiler)
 
     // DataStore for Preferences
     implementation(libs.datastore.preferences)
@@ -84,11 +93,19 @@ dependencies {
     // Serialization for JSON
     implementation(libs.serialization.json)
 
-    implementation(libs.javapoet)
+    //Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+
 
 
     // Testing Libraries
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }

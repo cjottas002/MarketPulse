@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
 import es.market.pulse.R
 import es.market.pulse.database.MarketPulseDatabase
 import es.market.pulse.databinding.ActivityLoginBinding
@@ -16,17 +18,16 @@ import es.market.pulse.ui.viewmodels.LoginViewModel
 import es.market.pulse.ui.viewmodels.ViewModelFactory
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var loginViewModel: LoginViewModel
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // Inicializar manualmente la base de datos y el repositorio
-        loginViewModel = ViewModelFactory.provideLoginViewModel(this)
 
         loginViewModel.email.value = "admin@example.com"
         loginViewModel.password.value = "admin"

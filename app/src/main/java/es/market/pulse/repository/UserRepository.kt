@@ -2,8 +2,9 @@ package es.market.pulse.repository
 
 import es.market.pulse.database.UserDao
 import es.market.pulse.model.User
+import javax.inject.Inject
 
-class UserRepository(private val userDao: UserDao) {
+class UserRepository @Inject constructor(private val userDao: UserDao) {
 
     fun getAllUsers(): List<User> {
         return userDao.getAllUsers()

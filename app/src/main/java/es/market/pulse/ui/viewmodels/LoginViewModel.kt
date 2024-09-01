@@ -2,12 +2,15 @@ package es.market.pulse.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import es.market.pulse.repository.UserRepository
 import es.market.pulse.utils.StringValidator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val userRepository: UserRepository) : ViewModel() {
 
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
