@@ -103,6 +103,18 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Kotlin Coroutines Test - para pruebas de corrutinas
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    // MockK - para mocking en pruebas unitarias
+    testImplementation (libs.mockito.core)
+
+    // AndroidX Core Testing - para pruebas de componentes de Android como LiveData
+    testImplementation(libs.androidx.core.testing)
+
+    // AndroidX Lifecycle ViewModel KTX - para trabajar con ViewModels en Kotlin
+    testImplementation(libs.lifecycle.viewmodel.ktx)
 }
 
 // Allow references to generated code

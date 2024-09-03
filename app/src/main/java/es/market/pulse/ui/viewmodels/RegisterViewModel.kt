@@ -12,23 +12,18 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val userRepository: UserRepository) :
-    ViewModel() {
+class RegisterViewModel @Inject constructor(private val userRepository: UserRepository) : ViewModel() {
 
     suspend fun register(name: String, email: String, password: String): Boolean {
         return withContext(Dispatchers.IO) {
             try {
-                val user = User(
-                    username = name,
-                    email = email,
-                    passwordHash = Helpers.hashPassword(password),
-                    roleId = RoleType.USER.ordinal
-                )
+                val user = User(username = name, email = email, passwordHash = Helpers.hashPassword(password), roleId = RoleType.USER.ordinal)
                 userRepository.addUser(user)
-                true
+                return@withContext true
             } catch (e: Exception) {
                 false
             }
         }
     }
+
 }
