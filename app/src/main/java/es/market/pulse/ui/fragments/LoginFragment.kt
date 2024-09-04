@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
     private val loginViewModel: LoginViewModel by viewModels<LoginViewModel>()
 
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>

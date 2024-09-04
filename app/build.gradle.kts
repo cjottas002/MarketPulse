@@ -47,6 +47,12 @@ android {
         dataBinding = true
         viewBinding = true
     }
+    // Excluir archivos duplicados
+    packaging {
+        resources {
+            excludes += "/mockito-extensions/org.mockito.plugins.MockMaker"
+        }
+    }
 }
 
 dependencies {
@@ -93,28 +99,48 @@ dependencies {
     // Serialization for JSON
     implementation(libs.serialization.json)
 
-    //Hilt
+    // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-
-
 
     // Testing Libraries
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // Kotlin Coroutines Test - para pruebas de corrutinas
+    // Kotlin Coroutines Test
     testImplementation(libs.kotlinx.coroutines.test)
 
-    // MockK - para mocking en pruebas unitarias
-    testImplementation (libs.mockito.core)
+    // Mockito for mocking in unit tests
+    testImplementation(libs.mockito.core)
+    androidTestImplementation (libs.mockito.android)
+    androidTestImplementation (libs.dexmaker.mockito.inline)
+//    testImplementation(libs.mockito.kotlin)
 
-    // AndroidX Core Testing - para pruebas de componentes de Android como LiveData
+    // AndroidX Core Testing - para LiveData y ViewModel
     testImplementation(libs.androidx.core.testing)
-
-    // AndroidX Lifecycle ViewModel KTX - para trabajar con ViewModels en Kotlin
     testImplementation(libs.lifecycle.viewmodel.ktx)
+
+    // Fragment Testing
+    debugImplementation(libs.androidx.fragment.testing)
+
+    // AndroidX Test Core
+    androidTestImplementation(libs.androidx.core.ktx)
+
+    // AndroidX Test Ext Junit
+    androidTestImplementation(libs.androidx.junit.ktx)
+
+    // Robolectric - para pruebas unitarias en JVM
+    testImplementation(libs.robolectric)
+
+    // Hilt Android para pruebas
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.android.compiler)
+
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("com.google.code.gson:gson:2.10.1")
+
+
 }
 
 // Allow references to generated code
