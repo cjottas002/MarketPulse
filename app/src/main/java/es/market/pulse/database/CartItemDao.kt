@@ -10,6 +10,9 @@ import es.market.pulse.model.CartItem
 @Dao
 interface CartItemDao {
 
+    @Query("SELECT * FROM cart_items")
+    suspend fun getAllCartItems(): List<CartItem>
+
     @Query("SELECT * FROM cart_items WHERE cartId = :cartId")
     suspend fun getItemsByCartId(cartId: Int): List<CartItem>
 
